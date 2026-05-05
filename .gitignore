@@ -1,0 +1,23 @@
+# Build artifacts
+*.exe
+*.dll
+*.pdb
+*.obj
+
+# Test/temporary files
+test_*.kf
+test_*.bf
+
+# IDE
+.vs/
+.vscode/
+*.sln
+*.csproj
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup
+*.bak
+*.tmp
