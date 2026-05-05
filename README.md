@@ -79,7 +79,7 @@ fkc.exe revert input.bf (output.kf)
 
 構文エラーがある場合は、行・列つきでエラー内容を表示して終了します。
 
-### ビルド
+## ビルド
 
 ```text
 make build
@@ -87,13 +87,13 @@ make build
 
 `make build` で `fkc.exe` と `fki.exe` をまとめて作成します。
 
-### テスト
+## テスト
 
 ```text
 make test
 ```
 
-### クリーン
+## クリーン
 
 ```text
 make clean
