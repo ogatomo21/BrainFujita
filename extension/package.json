@@ -3,6 +3,10 @@
   "displayName": "BrainFujita Extension",
   "description": "A Brainfuck-compatible language inspired by Kotone Fujita.",
   "publisher": "ogatomo21",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ogatomo21/BrainFujita.git"
+  },
   "version": "0.0.1",
   "icon": "icon.png",
   "engines": {
