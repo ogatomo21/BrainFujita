@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BrainFujita Playground</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { accent: '#f8c112' },
+          fontFamily: { sans: ['Hiragino Sans','Yu Gothic UI','Meiryo','Noto Sans JP','sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <script src="./assets/brainfujita-core.js" defer></script>
+  <script src="./assets/playground.js" defer></script>
+  <style>
+    a { color: #237aeb; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body class="bg-[#fff9ea] text-[#2f260f] font-sans">
+  <div class="min-h-screen flex flex-col md:flex-row">
+    <!-- Left: Editor -->
+    <div class="w-full md:w-2/3 md:border-r border-yellow-100 p-4 flex flex-col gap-3">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div class="flex items-center gap-3">
+          <span class="w-4 h-4 rounded-full bg-accent shadow-[0_0_0_6px_rgba(248,193,18,0.16)]"></span>
+          <h2 class="text-lg font-extrabold">ソース</h2>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <select id="sampleSelect" class="rounded border px-2 py-1 text-sm">
+            <option value="hello">hello-world.kf</option>
+            <option value="kotone">kotone.kf</option>
+          </select>
+          <button id="sampleLoadButton" class="px-3 py-1 rounded border">読み込む</button>
+          <label class="inline-flex items-center px-3 py-1 rounded border cursor-pointer">ファイル
+            <input id="fileInput" type="file" accept=".kf,.bf,.txt" class="hidden">
+          </label>
+        </div>
+      </div>
+
+      <textarea id="sourceInput" class="w-full rounded-lg border p-3 font-mono min-h-[42vh] md:min-h-0 md:flex-1" spellcheck="false" placeholder="ここに BrainFujita を貼り付けてください"></textarea>
+
+      <div class="grid gap-2 md:flex md:items-center md:gap-3">
+        <input id="stdinInput" class="w-full md:flex-1 rounded-lg border px-3 py-2 font-mono" placeholder="入力（1行）">
+        <div class="grid grid-cols-3 gap-2 md:flex md:gap-3">
+          <button id="executeButton" class="w-full md:w-auto px-4 py-2 rounded-lg bg-accent text-[#332400] font-bold">実行</button>
+          <button id="convertButton" class="w-full md:w-auto px-4 py-2 rounded-lg border">変換</button>
+          <button id="clearButton" class="w-full md:w-auto px-4 py-2 rounded-lg border">クリア</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Output / Memory -->
+    <div class="w-full md:w-1/3 p-4 flex flex-col gap-4">
+      <div class="bg-white border rounded-lg p-3">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-3">
+            <span id="statusDot" class="w-3 h-3 rounded-full bg-green-500 ring-4 ring-green-200"></span>
+            <div>
+              <div class="font-bold">標準出力</div>
+              <div class="text-sm text-[#6a5f3c]">実行結果・変換結果・エラーをここに表示します。</div>
+            </div>
+          </div>
+          <div id="modeBadge" class="self-start sm:self-auto shrink-0 whitespace-nowrap px-2 py-1 rounded-full bg-[#fffdf5] border text-sm">標準モード</div>
+        </div>
+        <textarea id="stdoutOutput" class="w-full mt-3 rounded-lg border p-3 min-h-[120px] font-mono" readonly></textarea>
+        <div id="stdoutHint" class="text-sm text-[#6a5f3c] mt-2">ソースを書いて実行してください。</div>
+      </div>
+
+      <div class="bg-white border rounded-lg p-3 flex-1 flex flex-col">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="font-bold">メモリ</div>
+            <div class="text-sm text-[#6a5f3c]">現在ポインタをハイライトします。</div>
+          </div>
+          <div id="pointerBadge" class="px-2 py-1 rounded-full bg-[#fffdf5] border text-sm">pointer -</div>
+        </div>
+        <div id="memoryView" class="mt-3 overflow-auto max-h-full"></div>
+      </div>
+
+      <div class="text-sm text-[#6a5f3c]">出力バイト: <span id="stdoutBytesCount">0 bytes</span></div>
+      <textarea id="stdoutBytes" class="w-full rounded-lg border p-2 font-mono min-h-[48px]" readonly></textarea>
+    </div>
+  </div>
+</body>
+</html>
