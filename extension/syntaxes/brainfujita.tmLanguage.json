@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "BrainFujita",
+  "patterns": [
+    {
+      "match": "^#!自己肯定感爆上げ(ちゅ～↑↑|中)",
+      "name": "entity.name.tag.brainfujita"
+    },
+    {
+      "match": "(しゅき|シュキ|ｼｭｷ)",
+      "name": "entity.name.function.brainfujita"
+    },
+    {
+      "match": "(だいしゅき|ダイシュキ|ﾀﾞｲｼｭｷ)",
+      "name": "entity.name.function.brainfujita"
+    },
+    {
+      "match": "(な|ナ|ﾅ)[ー\\-ｰ](?![？?])",
+      "name": "constant.numeric.brainfujita"
+    },
+    {
+      "match": "(せな|セナ|ｾﾅ)[ー\\-ｰ](?![？?])",
+      "name": "constant.numeric.brainfujita"
+    },
+    {
+      "match": "(せ|セ|ｾ)[ー\\-ｰ](の|ノ|ﾉ)",
+      "name": "support.class.brainfujita"
+    },
+    {
+      "match": "(ことね|コトネ|ｺﾄﾈ)",
+      "name": "support.class.brainfujita"
+    },
+    {
+      "match": "(な|ナ|ﾅ)[？?]",
+      "name": "keyword.control.brainfujita"
+    },
+    {
+      "match": "(せな|セナ|ｾﾅ)[？?]",
+      "name": "keyword.control.brainfujita"
+    },
+    {
+      "match": "#.*",
+      "name": "comment.line.number-sign.brainfujita"
+    }
+  ],
+  "scopeName": "source.kf"
+}
